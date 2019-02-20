@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Interactive App</title>
+  <title>City Comparer</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
   <!-- Bootstrap core CSS -->
@@ -15,51 +15,53 @@
 <body>
   <main class="container-fluid">
 
-    <h1>JavaScript for interactive apps!</h1>
-    <h3>Right-click / Inspect, then select console</h3>
-
-    <p>Enter your name:
-      <input id="guest" type="text" value="Eden">
+    <h1>JavaScript for City Comparer!</h1>
+    
+    
+    <p>Enter the first city name:
+      <input id="city1" type="text" value=" ">
     </p>
 
-    <p>Enter first number:
-      <input id="firstNumber" type="number" value="7">
+    <p>Enter the second city name:
+      <input id="city2" type="text" value=" ">
     </p>
 
-    <p>Enter second number:
-      <input id="secondNumber" type="number" value="12">
-    </p>
-
-    <button id="clicker" class="btn btn-primary">Click me!</button>
-
+    <button id="clicker" class="btn btn-primary" onclick="getshortest();" >Get The Shortest</button>
     <p id="result"></p>
+    <p id="testingresult"></p>
 
   </main>
 
-  <script>
-    console.log('SCRIPT START')
+  <script type="text/javascript">
+  console.log('SCRIPT START')
+  console.log('Defined get shortest city function' )
+    function getshortest() {
+    
+    let first_box = document.getElementById("city1").value;
 
-    console.log('Declare testable functions.....................')
 
-    function add(x, y) {
-      return x + y
+    let second_box = document.getElementById("city2").value;
+    console.log('Declare event listeners for ids city1 and city2')
+    
+    if (first_box.length >  second_box.length){
+      
+      document.getElementById("testingresult").innerHTML = "the shortest city is " + second_box; 
     }
-    console.log('Defined add=' + add)
 
-    console.log('Declare event listeners .......................')
+    if (first_box.length <  second_box.length){
+      
+      document.getElementById("testingresult").innerHTML = "the shortest city is " + first_box; 
+    }
+    document.getElementById("result").innerHTML = "the shortest city in length of charecters is " + Math.min(first_box.length, second_box.length); 
+    console.log('assigned value for the result tag')
 
-    document.getElementById('clicker').addEventListener('click', function () {
-      const s = document.getElementById('guest').value
-      const i = parseInt(document.getElementById('firstNumber').value)
-      console.log('i=' + i)
-      const j = parseInt(document.getElementById('secondNumber').value)
-      console.log('j=' + j)
-      const ans = s + ', your sum is ' + add(i, j) + '.'
-      document.getElementById('result').innerHTML = ans
-    })
 
-    console.log('SCRIPT END')
-  </script>
+    
+    
+    
+    }
+    </script>
+
 
   <!-- JQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
